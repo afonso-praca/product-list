@@ -1,0 +1,40 @@
+@import "~utils/base/base";
+@import "~vtex-css-utils/less/_css-utils";
+
+.ListProduct {
+  .product-grid-item {
+    background: #FFF;
+  }
+
+  .product-name {
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 0px;
+  }
+
+  .product-button {
+    background: @green-fashion;
+    border-radius: @pad / 2;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: @pad;
+  }
+
+  .product-price-by {
+    color: #337ab7;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .product-price-from {
+    color: #666;
+    font-size: 14px;
+    font-weight: 400;
+
+    .product-price-strike {
+      text-decoration: line-through;
+    }
+  }
+}

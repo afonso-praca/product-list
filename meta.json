@@ -1,0 +1,10 @@
+{
+  "name": "product-list",
+  "vendor": "vtex",
+  "title": "Product List",
+  "description": "Product list component",
+  "version": "0.1.0",
+  "dependencies": {
+    "vtex.storefront": "0"
+  }
+}

@@ -1,0 +1,21 @@
+@import "~utils/base/base";
+@import "~vtex-css-utils/less/_css-utils";
+
+.GridLayout {
+  .grid-product-wrapper {
+    padding: @pad;
+
+    &:nth-child(even) {
+      border-top: 2px solid darken(#F7F7F7, 10%);
+      border-left: 2px solid darken(#F7F7F7, 10%);
+    }
+
+    &:nth-child(odd) {
+      border-top: 2px solid darken(#F7F7F7, 10%);
+    }
+
+    &:first-child, &:nth-child(2) {
+      border-top: none;
+    }
+  }
+}

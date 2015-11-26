@@ -1,0 +1,17 @@
+{
+  "resourceBinding": {
+    "locator": "products@vtex.storefront-sdk",
+    "relativePath": "/dreamstore/products",
+    "queryParams": {
+      "category": "{{ route.splat }}",
+      "brands": "{{ query.brands }}",
+      "sort": "{{ query.sort }}",
+      "page": "{{ query.page }}",
+      "pageSize": "{{ query.pageSize }}"
+    }
+  },
+  "assets": [
+    "common.js",
+    "ProductList.js"
+  ]
+}

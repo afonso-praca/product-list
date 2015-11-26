@@ -1,0 +1,53 @@
+@import "~utils/base/base";
+@import "~vtex-css-utils/less/_css-utils";
+
+.GridProduct {
+  .product-grid-item {
+    background: #FFF;
+  }
+
+  .product-image {
+    background: red;
+    margin-top: @pad * 2;
+  }
+
+  .product-name-wrapper {
+    padding-top: @pad / 2;
+    min-height: 145px;
+  }
+
+  .product-name {
+    font-family: 'Lato';
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: @pad;
+  }
+
+  .product-button {
+    background: @green-fashion;
+    border-radius: @pad / 2;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 500;
+    margin: @pad 0px;
+    width: 100%;
+  }
+
+  .product-price-by {
+    color: #337ab7;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .product-price-from {
+    color: #666;
+    font-size: 14px;
+    font-weight: 400;
+
+    .product-price-strike {
+      text-decoration: line-through;
+    }
+  }
+}
+
