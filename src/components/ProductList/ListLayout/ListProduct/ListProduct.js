@@ -1,9 +1,9 @@
 import React from 'react';
 import './ListProduct.less';
-import { utils } from 'sdk';
+import { stores } from 'sdk';
 import { Link } from 'react-router';
 
-let { Price } = utils;
+const Price = stores.ComponentStore.state.getIn(['Price@vtex.storefront-sdk', 'constructor']);
 
 class ListProduct extends React.Component {
   render() {
