@@ -1,10 +1,10 @@
 import React from 'react';
-import { stores, utils } from 'sdk';
+import { stores, connectToStores } from 'sdk';
 import GridLayout from './GridLayout/GridLayout';
 import ListLayout from './ListLayout/ListLayout';
 import Pagination from './Pagination/Pagination';
 
-@utils.connectToStores()
+@connectToStores()
 class ProductList extends React.Component {
   static getStores() {
     return [
