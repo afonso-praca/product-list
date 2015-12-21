@@ -26,7 +26,7 @@ class GridProduct extends React.Component {
             </div>
           </div>
           <div className="row-fluid">
-            <Link to={`/${this.props.slug}/p`} className="product-button btn">
+            <Link to={`/${this.props.slug}/p`} className="product-button btn theme__background-color--secondary">
               Comprar
             </Link>
           </div>
