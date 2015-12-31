@@ -1,5 +1,5 @@
 import { actions } from 'sdk';
-import ProductList from './ProductList/ProductList';
+import ProductList from './ProductList';
 
 let components = [
   {
