@@ -7,7 +7,6 @@ class LoadMore extends React.Component {
     let queries = {...this.props.location.query};
     queries.pageSize = parseInt(queries.pageSize, 10) + 5;
 
-    this.props.skipPageRender();
     history.replaceState(null, this.props.location.pathname, queries);
   }
 

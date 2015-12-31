@@ -45,7 +45,12 @@ class ProductList extends React.Component {
       <div>
         { layout }
         <br />
-        { pagination }
+        <Area
+          id={`${this.props.areaPath}/product-list/pagination`}
+          areaPath={this.props.areaPath}
+          location={this.props.location}
+          productsLength={productsIds.length}
+        />
         <br />
         <br />
       </div>
