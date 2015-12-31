@@ -43,7 +43,11 @@ class ProductList extends React.Component {
 
     return (
       <div>
-        { layout }
+        {
+          productsIds.length > 0 ?
+            layout :
+            <h2>Não encontramos nenhum produto ):</h2>
+        }
         <br />
         <Area
           id={`${this.props.areaPath}/product-list/pagination`}
