@@ -6,7 +6,8 @@ var production = process.env.NODE_ENV === 'production';
 
 var config = {
   entry: {
-    'ProductList': ['./src/components/index.js']
+    'ProductList': ['./src/components/ProductList/index.js'],
+    'Pagination': ['./src/components/Pagination/index.js']
   },
 
   module: {

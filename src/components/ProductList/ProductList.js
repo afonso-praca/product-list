@@ -2,57 +2,57 @@ import React from 'react';
 import { stores, connectToStores } from 'sdk';
 import GridLayout from './GridLayout/GridLayout';
 import ListLayout from './ListLayout/ListLayout';
-import Pagination from './Pagination/Pagination';
+
+const Area = stores.ComponentStore.getState().getIn(['Area@vtex.storefront-sdk', 'constructor']);
 
 @connectToStores()
 class ProductList extends React.Component {
   static getStores() {
     return [
       stores.ContextStore,
-      stores.SearchStore,
-      stores.ProductStore
+      stores.SearchStore
     ];
   }
 
-  static getPropsFromStores() {
-    let path = window.location.pathname + window.location.search;
-    let searchStoreKey = [path, 'category/product-list', 'results'];
-
+  static getPropsFromStores = () => {
     return {
-      productsIds: stores.SearchStore.getState().getIn(searchStoreKey)
+      SearchStore: stores.SearchStore.getState()
     };
   }
 
-  shouldComponentUpdate({ productsIds }) {
-    if (!productsIds) {
-      return false;
-    }
+  shouldComponentUpdate({ location, areaPath, SearchStore }) {
+    let path = location.pathname + location.search;
+    let searchStoreKey = [path, `${areaPath}/product-list`, 'results'];
+    let productsIds = SearchStore.getIn(searchStoreKey);
 
-    return true;
+    return productsIds !== undefined;
   }
 
   render() {
-    let products = stores.ProductStore.getProducts(this.props.productsIds);
-    let pagination = null;
-
-    if (this.props.productsIds.length < this.props.qty) {
-      pagination = (
-        <Pagination
-          location={this.props.location}
-          skipPageRender={this.props.skipPageRender}
-        />
-      );
-    }
-
+    let path = this.props.location.pathname + this.props.location.search;
+    let searchStoreKey = [path, `${this.props.areaPath}/product-list`, 'results'];
+    let productsIds = this.props.SearchStore.getIn(searchStoreKey);
+    let products = stores.ProductStore.getProducts(productsIds);
     let layout = this.props.grid ?
       ( <GridLayout products={products} /> ) :
       ( <ListLayout products={products} /> );
 
     return (
       <div>
-        { layout }
+        {
+          productsIds.length > 0 ?
+            layout :
+            <h2 className="h2">
+              Não encontramos nenhum produto ):
+            </h2>
+        }
         <br />
-        { pagination }
+        <Area
+          id={`${this.props.areaPath}/product-list/pagination`}
+          areaPath={this.props.areaPath}
+          location={this.props.location}
+          productsLength={productsIds.length}
+        />
         <br />
         <br />
       </div>
