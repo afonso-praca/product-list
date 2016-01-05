@@ -25,11 +25,7 @@ class ProductList extends React.Component {
     let searchStoreKey = [path, `${areaPath}/product-list`, 'results'];
     let productsIds = SearchStore.getIn(searchStoreKey);
 
-    if (productsIds === undefined) {
-      return false;
-    }
-
-    return true;
+    return productsIds !== undefined;
   }
 
   render() {

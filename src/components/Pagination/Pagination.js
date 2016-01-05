@@ -24,11 +24,7 @@ class Pagination extends React.Component {
       facets.getIn(['filters', 'category']).first().get('productQuantity') :
       undefined;
 
-    if (qty === undefined) {
-      return false;
-    }
-
-    return true;
+    return qty !== undefined;
   }
 
   render() {
