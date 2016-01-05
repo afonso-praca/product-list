@@ -46,7 +46,9 @@ class ProductList extends React.Component {
         {
           productsIds.length > 0 ?
             layout :
-            <h2>Não encontramos nenhum produto ):</h2>
+            <h2 className="h2">
+              Não encontramos nenhum produto ):
+            </h2>
         }
         <br />
         <Area
