@@ -34,7 +34,8 @@ class Pagination extends React.Component {
   render() {
     let path = this.props.location.pathname + this.props.location.search;
     let facets = this.props.FacetsStore.getIn([path, `${this.props.areaPath}/product-list/pagination`]);
-    let qty = facets.getIn(['filters', 'category']).first().get('productQuantity');
+    let qty = facets.getIn(['filters', 'category']).first() ?
+      facets.get('productQuantity') : 0;
 
     return (
       <div>
