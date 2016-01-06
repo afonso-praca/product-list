@@ -4,7 +4,7 @@
       "locator": "search@vtex.storefront-sdk",
       "relativePath": "/{{ account }}/products",
       "queryParams": {
-        "query": "{{ route.query }}",
+        "query": "{{ route.searchTerm }}",
         "category": "{{ route.splat }}",
         "brands": "{{ query.brands }}",
         "sort": "{{ query.sort }}",
