@@ -17,21 +17,22 @@ class Pagination extends React.Component {
     };
   }
 
-  shouldComponentUpdate({ location, areaPath, FacetsStore }) {
+  getQty = (location, areaPath, FacetsStore) => {
     let path = location.pathname + location.search;
     let facets = FacetsStore.getIn([path, `${areaPath}/product-list/pagination`]);
-    let qty = facets ?
-      facets.getIn(['filters', 'category']).first().get('productQuantity') :
-      undefined;
+    let category = facets.getIn(['filters', 'category']).first();
+
+    return category ? category.get('productQuantity') : undefined;
+  }
+
+  shouldComponentUpdate({ location, areaPath, FacetsStore }) {
+    let qty = this.getQty(location, areaPath, FacetsStore);
 
     return qty !== undefined;
   }
 
   render() {
-    let path = this.props.location.pathname + this.props.location.search;
-    let facets = this.props.FacetsStore.getIn([path, `${this.props.areaPath}/product-list/pagination`]);
-    let qty = facets.getIn(['filters', 'category']).first() ?
-      facets.get('productQuantity') : 0;
+    let qty = this.getQty(this.props.location, this.props.areaPath, this.props.FacetsStore) || 0;
 
     return (
       <div>

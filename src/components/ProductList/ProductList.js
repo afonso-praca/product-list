@@ -20,18 +20,21 @@ class ProductList extends React.Component {
     };
   }
 
-  shouldComponentUpdate({ location, areaPath, SearchStore }) {
+  getProductsIds = (location, areaPath, SearchStore) => {
     let path = location.pathname + location.search;
     let searchStoreKey = [path, `${areaPath}/product-list`, 'results'];
-    let productsIds = SearchStore.getIn(searchStoreKey);
+
+    return SearchStore.getIn(searchStoreKey) || undefined;
+  }
+
+  shouldComponentUpdate({ location, areaPath, SearchStore }) {
+    let productsIds = this.getProductsIds(location, areaPath, SearchStore);
 
     return productsIds !== undefined;
   }
 
   render() {
-    let path = this.props.location.pathname + this.props.location.search;
-    let searchStoreKey = [path, `${this.props.areaPath}/product-list`, 'results'];
-    let productsIds = this.props.SearchStore.getIn(searchStoreKey);
+    let productsIds = this.getProductsIds(this.props.location, this.props.areaPath, this.props.SearchStore) || [];
     let products = stores.ProductStore.getProducts(productsIds);
     let layout = this.props.grid ?
       ( <GridLayout products={products} /> ) :
