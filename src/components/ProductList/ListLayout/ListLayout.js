@@ -8,9 +8,9 @@ class ListLayout extends React.Component {
     let products = this.props.products ?
       map(this.props.products, function(product) {
         return (
-          <div key={product.slug} className="list-product-wrapper">
+          <div key={product.slug} className="ListLayout__product-wrapper clearfix">
             <ListProduct {...product} />
-            <hr className="product-separator" />
+            <hr className="ListLayout__ruler" />
           </div>
         );
       }) :

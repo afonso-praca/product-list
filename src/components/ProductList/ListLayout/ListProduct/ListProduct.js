@@ -14,25 +14,22 @@ class ListProduct extends React.Component {
 
     return (
       <div className="ListProduct">
-        <div className="product-grid-item">
-          <img
-            className="product-image col-xs-4"
-            src={imageUrl}
-            width={96}
-            height={96}
-          />
-          <div className="col-xs-8">
+        <div className="ListProduct__grid-item row">
+          <div className="ListProduct__image-wrapper col-xs-4 col-sm-4 col-md-3 col-lg-3">
+            <img className="ListProduct__image" src={imageUrl} />
+          </div>
+          <div className="ListProduct__content col-xs-8 col-sm-8 col-md-9 col-lg-9">
             <div>
-              <h4 className="product-name">{ this.props.name }</h4>
-              <div className="product-price-from">
-                <span>de</span>
-                <span className="product-price-strike">
+              <h4 className="ListProduct__name">{ this.props.name }</h4>
+              <div className="ListProduct__price-from">
+                <span>de </span>
+                <span className="ListProduct__price-strike">
                   <Price value={listPrice} />
                 </span>
               </div>
-              <div className="product-price-by">
-                <span>por</span>
-                <span className="product-price">
+              <div className="ListProduct__price-by">
+                <span>por </span>
+                <span className="ListProduct__price">
                   <Price value={price} />
                 </span>
               </div>
@@ -40,7 +37,7 @@ class ListProduct extends React.Component {
             <div>
               <Link
                 to={`/${this.props.slug}/p`}
-                className="product-button btn theme__background-color--secondary"
+                className="ListProduct__button btn theme__background-color--secondary"
               >
                 Comprar
               </Link>
