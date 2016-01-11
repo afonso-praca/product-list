@@ -15,33 +15,36 @@ class ListProduct extends React.Component {
     return (
       <div className="ListProduct">
         <div className="ListProduct__grid-item row">
-          <div className="ListProduct__image-wrapper col-xs-4 col-sm-4 col-md-3 col-lg-3">
-            <img className="ListProduct__image" src={imageUrl} />
-          </div>
+          <Link to={`/${this.props.slug}/p`}>
+            <div className="ListProduct__image-wrapper col-xs-4 col-sm-4 col-md-3 col-lg-3">
+              <img className="ListProduct__image" src={imageUrl} />
+            </div>
+          </Link>
           <div className="ListProduct__content col-xs-8 col-sm-8 col-md-9 col-lg-9">
             <div>
-              <h4 className="ListProduct__name">{ this.props.name }</h4>
+              <h4 className="ListProduct__name">
+                <Link to={`/${this.props.slug}/p`}>
+                  { this.props.name }
+                </Link>
+              </h4>
               <div className="ListProduct__price-from">
                 <span>de </span>
                 <span className="ListProduct__price-strike">
                   <Price value={listPrice} />
                 </span>
               </div>
-              <div className="ListProduct__price-by">
-                <span>por </span>
-                <span className="ListProduct__price">
-                  <Price value={price} />
-                </span>
-              </div>
-            </div>
-            <div>
-              <Link
-                to={`/${this.props.slug}/p`}
-                className="ListProduct__button btn theme__background-color--secondary"
-              >
-                Comprar
+              <Link to={`/${this.props.slug}/p`}>
+                <div className="ListProduct__price-by">
+                  <span>por </span>
+                  <span className="ListProduct__price">
+                    <Price value={price} />
+                  </span>
+                </div>
               </Link>
             </div>
+            <Link to={`/${this.props.slug}/p`}>
+              <button className="ListProduct__button theme__background-color--secondary">Comprar</button>
+            </Link>
           </div>
         </div>
       </div>

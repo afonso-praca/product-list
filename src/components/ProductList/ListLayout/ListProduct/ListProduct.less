@@ -18,14 +18,22 @@
     font-size: 1.3em;
     font-weight: 300;
     margin-top: 0px;
+    color: #333;
   }
 
   &__button {
+    .css-utils-clean-btn();
+    .css-utils-no-outlines();
     border-radius: 2.5px;
     color: #FFF;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 1.2em;
+    font-weight: 400;
     margin-top: 7.5px;
+    padding: 10px 15px;
+
+    &:hover {
+      color: darken(#FFF, 5%);
+    }
   }
 
   &__price-by {
