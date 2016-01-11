@@ -14,7 +14,7 @@ class ListProduct extends React.Component {
 
     return (
       <div className="ListProduct">
-        <div className="product-grid-item row-fluid clearfix">
+        <div className="product-grid-item">
           <img
             className="product-image col-xs-4"
             src={imageUrl}
@@ -22,7 +22,7 @@ class ListProduct extends React.Component {
             height={96}
           />
           <div className="col-xs-8">
-            <div className="row-fluid">
+            <div>
               <h4 className="product-name">{ this.props.name }</h4>
               <div className="product-price-from">
                 <span>de</span>
@@ -37,7 +37,7 @@ class ListProduct extends React.Component {
                 </span>
               </div>
             </div>
-            <div className="row-fluid">
+            <div>
               <Link
                 to={`/${this.props.slug}/p`}
                 className="product-button btn theme__background-color--secondary"

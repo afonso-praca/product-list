@@ -17,7 +17,7 @@ class ListLayout extends React.Component {
       ( <div>Carregando</div> );
 
     return (
-      <div className="ListLayout container">
+      <div className="ListLayout clearfix">
         { products }
       </div>
     );
