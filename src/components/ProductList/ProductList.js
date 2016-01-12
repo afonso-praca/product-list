@@ -41,7 +41,7 @@ class ProductList extends React.Component {
       ( <ListLayout products={products} /> );
 
     return (
-      <div className="ProductList theme__width">
+      <div className="ProductList">
         {
           productsIds.length > 0 ?
             layout :
