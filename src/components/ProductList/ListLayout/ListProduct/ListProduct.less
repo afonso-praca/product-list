@@ -6,7 +6,27 @@
     background: #FFF;
   }
 
+  &__image-wrapper {
+    border-radius: 2.5px;
+    background: #F6F6F6;
+    position: relative;
+    min-height: 200px;
+    overflow: hidden;
+
+    @media (min-width: @screen-md-min) {
+      min-height: 245px;
+    }
+  }
+
   &__image {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    margin: auto;
+    position: absolute;
+    height: auto;
     width: 100%;
   }
 

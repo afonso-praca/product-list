@@ -43,7 +43,7 @@ class ListProduct extends React.Component {
               </Link>
             </div>
             <Link to={`/${this.props.slug}/p`}>
-              <button className="ListProduct__button theme__background-color--secondary">Comprar</button>
+              <button className="ListProduct__button theme__background-color--secondary">Adicionar ao Carrinho</button>
             </Link>
           </div>
         </div>
