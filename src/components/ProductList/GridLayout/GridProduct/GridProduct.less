@@ -1,49 +1,77 @@
 @import "~vtex-css-utils/less/_css-utils";
 
 .GridProduct {
-  .product-grid-item {
+  //background: #ccc;
+
+  &__grid-item {
     background: #FFF;
   }
 
-  .product-image {
-    background: red;
-    margin-top: @pad * 2;
+  &__image-wrapper {
+    border-top-left-radius: 2.5px;
+    border-top-right-radius: 2.5px;
+    background: #F6F6F6;
+    position: relative;
+    min-height: 200px;
+    overflow: hidden;
+
+    @media (min-width: @screen-md-min) {
+      min-height: 245px;
+    }
   }
 
-  .product-name-wrapper {
-    padding-top: @pad / 2;
-    min-height: 145px;
+  &__image {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    margin: auto;
+    position: absolute;
+    height: auto;
+    width: 100%;
   }
 
-  .product-name {
-    font-family: 'Lato';
-    font-size: 14px;
+  &__content {
+    padding: 15px 7.5px 0px 7.5px;
+    min-height: 100px;
+  }
+
+  &__name {
+    font-size: 1.3em;
     font-weight: 500;
     margin-top: 0px;
     margin-bottom: @pad;
   }
 
-  .product-button {
-    border-radius: @pad / 2;
+  &__button {
+    .css-utils-clean-btn();
+    .css-utils-no-outlines();
+    border-radius: 2.5px;
     color: #FFF;
-    font-size: 14px;
-    font-weight: 500;
-    margin: @pad 0px;
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 7.5px;
+    padding: 10px 15px;
     width: 100%;
+
+    &:hover {
+      color: darken(#FFF, 5%);
+    }
   }
 
-  .product-price-by {
+  &__price-by {
     color: #337ab7;
-    font-size: 16px;
+    font-size: 1.35em;
     font-weight: 500;
   }
 
-  .product-price-from {
+  &__price-from {
     color: #666;
-    font-size: 14px;
+    font-size: 1em;
     font-weight: 400;
 
-    .product-price-strike {
+    .GridProduct__price-strike {
       text-decoration: line-through;
     }
   }
