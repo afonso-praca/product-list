@@ -2,6 +2,7 @@ import React from 'react';
 import { stores, connectToStores } from 'sdk';
 import GridLayout from './GridLayout/GridLayout';
 import ListLayout from './ListLayout/ListLayout';
+import './ProductList.less';
 
 const Area = stores.ComponentStore.getState().getIn(['Area@vtex.storefront-sdk', 'constructor']);
 
@@ -57,7 +58,7 @@ class ProductList extends React.Component {
             areaPath={this.props.areaPath}
             location={this.props.location}
             productsLength={productsIds.length}
-          />          
+          />
         </div>
       </div>
     );
