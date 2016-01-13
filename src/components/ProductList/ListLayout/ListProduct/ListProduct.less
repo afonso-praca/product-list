@@ -1,9 +1,12 @@
 @import "~vtex-css-utils/less/_css-utils";
 
 .ListProduct {
+  background: #FFF;
 
-  &___grid-item {
-    background: #FFF;
+  &__ruler {
+    border: #F7F7F7;
+    border-bottom: 1px solid #EFEDED;
+    width: 100%;
   }
 
   &__image-wrapper {
@@ -12,6 +15,10 @@
     position: relative;
     min-height: 200px;
     overflow: hidden;
+
+    @media (max-width: @screen-xs-max) {
+      min-height: 150px;
+    }
 
     @media (min-width: @screen-md-min) {
       min-height: 245px;
@@ -31,11 +38,14 @@
   }
 
   &__name {
-    font-family: 'Lato';
-    font-size: 1.3em;
+    font-size: 16px;
     font-weight: 300;
     margin-top: 0px;
     color: #333;
+
+    @media (min-width: @screen-md-min) {
+      font-size: 1.3em;
+    }
   }
 
   &__button {
@@ -43,20 +53,23 @@
     .css-utils-no-outlines();
     border-radius: 2.5px;
     color: #FFF;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 400;
     margin-top: 7.5px;
-    padding: 10px 15px;
+    padding: 7.5px 10px;
 
     &:hover {
-      color: darken(#FFF, 5%);
+      color: darken(#FFF, 2%);
     }
-  }
 
-  &__price-by {
-    color: #337ab7;
-    font-size: 1.35em;
-    font-weight: 500;
+    @media (max-width: @screen-xs-max) {
+      width: 100%;
+    }
+
+    @media (min-width: @screen-md-min) {
+      font-size: 1.2em;
+      padding: 10px 15px;
+    }
   }
 
   &__price-from {
@@ -67,5 +80,25 @@
     .ListProduct__price-strike {
       text-decoration: line-through;
     }
+  }
+
+  &__price-by {
+    color: #337ab7;
+    font-size: 1.1em;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    @media (min-width: @screen-md-min) {
+      font-size: 1.2em;
+    }
+  }
+}
+
+.ListLayout__product:last-child {
+  .ListProduct__ruler {
+    display: none;
   }
 }

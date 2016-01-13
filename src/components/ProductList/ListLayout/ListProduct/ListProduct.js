@@ -13,8 +13,8 @@ class ListProduct extends React.Component {
     let price = defaultSku.offers[0].price;
 
     return (
-      <div className="ListProduct">
-        <div className="ListProduct__grid-item row">
+      <div className="ListProduct__parent">
+        <div className="ListProduct">
           <Link to={`/${this.props.slug}/p`}>
             <div className="ListProduct__image-wrapper col-xs-4 col-sm-4 col-md-3 col-lg-3">
               <img className="ListProduct__image" src={imageUrl} />
@@ -27,14 +27,14 @@ class ListProduct extends React.Component {
                   { this.props.name }
                 </Link>
               </h4>
-              <div className="ListProduct__price-from">
+              <div className="ListProduct__price-from theme__color--dark">
                 <span>de </span>
                 <span className="ListProduct__price-strike">
                   <Price value={listPrice} />
                 </span>
               </div>
-              <Link to={`/${this.props.slug}/p`}>
-                <div className="ListProduct__price-by">
+              <Link className="ListProduct__price-by" to={`/${this.props.slug}/p`}>
+                <div className="theme__color--accent theme__hover-color--accent">
                   <span>por </span>
                   <span className="ListProduct__price">
                     <Price value={price} />
@@ -43,8 +43,18 @@ class ListProduct extends React.Component {
               </Link>
             </div>
             <Link to={`/${this.props.slug}/p`}>
-              <button className="ListProduct__button theme__background-color--secondary">Adicionar ao Carrinho</button>
+              <button className="
+                ListProduct__button
+                theme__background-color--secondary
+                theme__background-hover-color--secondary">
+                Ver Mais
+              </button>
             </Link>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12">
+            <hr className="ListProduct__ruler" />
           </div>
         </div>
       </div>
