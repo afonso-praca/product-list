@@ -5,7 +5,8 @@ import './LoadMore.less';
 class LoadMore extends React.Component {
   handleTouchTap = () => {
     let queries = {...this.props.location.query};
-    queries.pageSize = parseInt(queries.pageSize, 10) + 5;
+    let pageSize = parseInt(queries.pageSize, 10) || 10;
+    queries.pageSize = pageSize + 5;
 
     history.replaceState(null, this.props.location.pathname, queries);
   }
