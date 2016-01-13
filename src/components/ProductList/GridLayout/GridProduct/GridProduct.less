@@ -16,6 +16,8 @@
     overflow: hidden;
 
     @media (min-width: @screen-md-min) {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
       min-height: 245px;
     }
   }
@@ -33,15 +35,19 @@
   }
 
   &__content {
-    padding: 15px 7.5px 0px 7.5px;
+    padding-top: 15px;
     min-height: 100px;
   }
 
   &__name {
-    font-size: 1.3em;
+    font-size: 16px;
     font-weight: 500;
     margin-top: 0px;
-    margin-bottom: @pad;
+    margin-bottom: 7.5px;
+
+    @media (min-width: @screen-md-min) {
+      font-size: 1.2em;
+    }
   }
 
   &__button {
@@ -60,12 +66,6 @@
     }
   }
 
-  &__price-by {
-    color: #337ab7;
-    font-size: 1.35em;
-    font-weight: 500;
-  }
-
   &__price-from {
     color: #666;
     font-size: 1em;
@@ -75,4 +75,19 @@
       text-decoration: line-through;
     }
   }
+
+  &__price-by {
+    color: #337ab7;
+    font-size: 1.1em;
+    font-weight: 500;
+
+    @media (min-width: @screen-md-min) {
+      font-size: 1.2em;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
 }

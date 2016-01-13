@@ -46,7 +46,8 @@ class ListProduct extends React.Component {
               <button className="
                 ListProduct__button
                 theme__background-color--secondary
-                theme__background-hover-color--secondary">
+                theme__background-hover-color--secondary
+                theme__font-family--main">
                 Ver Mais
               </button>
             </Link>
