@@ -9,7 +9,7 @@
         "brands": "{{ query.brands }}",
         "sort": "{{ query.sort }}",
         "page": "{{ query.page }}",
-        "pageSize": "{{ query.pageSize }}"
+        "pageSize": "{% if query.pageSize %} {{ query.pageSize }} {% else %} {{ 10 }} {% endif %}"
       },
       "bindTo": "products@vtex"
     }
