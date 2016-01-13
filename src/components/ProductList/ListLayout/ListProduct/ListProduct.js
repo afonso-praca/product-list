@@ -23,7 +23,7 @@ class ListProduct extends React.Component {
           <div className="ListProduct__content col-xs-8 col-sm-8 col-md-9 col-lg-9">
             <div>
               <h4 className="ListProduct__name theme__font-family--main">
-                <Link to={`/${this.props.slug}/p`}>
+                <Link to={`/${this.props.slug}/p`} className="theme__color--dark theme__hover-color--dark">
                   { this.props.name }
                 </Link>
               </h4>

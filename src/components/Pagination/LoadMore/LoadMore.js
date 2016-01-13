@@ -13,11 +13,15 @@ class LoadMore extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <button className="LoadMore" onTouchTap={this.handleTouchTap}>
-          <span>Ver mais</span>
-        </button>
-      </div>
+      <button className="
+        LoadMore
+        theme__background-color--primary
+        theme__background-hover-color--primary
+        theme__font-family--main"
+        onTouchTap={this.handleTouchTap}
+      >
+        <span>Mais Produtos</span>
+      </button>
     );
   }
 }
