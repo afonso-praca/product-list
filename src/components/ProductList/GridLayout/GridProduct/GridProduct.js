@@ -14,22 +14,34 @@ class GridProduct extends React.Component {
 
     return (
       <div className="GridProduct">
-        <div className="product-grid-item row-fluid clearfix">
-          <img className="product-image" src={imageUrl} width={140} height={140} />
-          <div className="row-fluid product-name-wrapper">
-            <h4 className="product-name">{ this.props.name }</h4>
-            <div className="product-price-from">
-              <span>de</span> <span className="product-price-strike"><Price value={listPrice}/></span>
-            </div>
-            <div className="product-price-by">
-              <span>por</span> <span className="product-price"><Price value={price}/></span>
-            </div>
-          </div>
-          <div className="row-fluid">
-            <Link to={`/${this.props.slug}/p`} className="product-button btn theme__background-color--secondary">
-              Comprar
+        <div className="GridProduct__item clearfix">
+          <div className="GridProduct__image-wrapper">
+            <Link className="GridProduct__price-by" to={`/${this.props.slug}/p`}>
+              <img className="GridProduct__image" src={imageUrl} />
             </Link>
           </div>
+          <div className="GridProduct__content">
+            <h4 className="GridProduct__name theme__font-family--main">
+              <Link className="theme__color--dark theme__hover-color--dark" to={`/${this.props.slug}/p`}>
+                { this.props.name }
+              </Link>
+            </h4>
+            <div className="GridProduct__price-from theme__color--dark">
+              <span>de </span>
+              <span className="GridProduct__price-strike"><Price value={listPrice}/></span>
+            </div>
+            <Link className="GridProduct__price-by" to={`/${this.props.slug}/p`}>
+              <div className="theme__color--accent theme__hover-color--accent">
+                <span>por </span>
+                <span className="GridProduct__price"><Price value={price}/></span>
+              </div>
+            </Link>
+          </div>
+            <Link to={`/${this.props.slug}/p`}>
+              <button className="GridProduct__button theme__background-color--secondary theme__font-family--main theme__background-hover-color--secondary">
+                Ver Mais
+              </button>
+            </Link>
         </div>
       </div>
     );

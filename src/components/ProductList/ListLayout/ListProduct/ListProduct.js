@@ -13,38 +13,49 @@ class ListProduct extends React.Component {
     let price = defaultSku.offers[0].price;
 
     return (
-      <div className="ListProduct">
-        <div className="product-grid-item row-fluid clearfix">
-          <img
-            className="product-image col-xs-4"
-            src={imageUrl}
-            width={96}
-            height={96}
-          />
-          <div className="col-xs-8">
-            <div className="row-fluid">
-              <h4 className="product-name">{ this.props.name }</h4>
-              <div className="product-price-from">
-                <span>de</span>
-                <span className="product-price-strike">
+      <div className="ListProduct__parent">
+        <div className="ListProduct">
+          <Link to={`/${this.props.slug}/p`}>
+            <div className="ListProduct__image-wrapper col-xs-4 col-sm-4 col-md-3 col-lg-3">
+              <img className="ListProduct__image" src={imageUrl} />
+            </div>
+          </Link>
+          <div className="ListProduct__content col-xs-8 col-sm-8 col-md-9 col-lg-9">
+            <div>
+              <h4 className="ListProduct__name theme__font-family--main">
+                <Link to={`/${this.props.slug}/p`} className="theme__color--dark theme__hover-color--dark">
+                  { this.props.name }
+                </Link>
+              </h4>
+              <div className="ListProduct__price-from theme__color--dark">
+                <span>de </span>
+                <span className="ListProduct__price-strike">
                   <Price value={listPrice} />
                 </span>
               </div>
-              <div className="product-price-by">
-                <span>por</span>
-                <span className="product-price">
-                  <Price value={price} />
-                </span>
-              </div>
-            </div>
-            <div className="row-fluid">
-              <Link
-                to={`/${this.props.slug}/p`}
-                className="product-button btn theme__background-color--secondary"
-              >
-                Comprar
+              <Link className="ListProduct__price-by" to={`/${this.props.slug}/p`}>
+                <div className="theme__color--accent theme__hover-color--accent">
+                  <span>por </span>
+                  <span className="ListProduct__price">
+                    <Price value={price} />
+                  </span>
+                </div>
               </Link>
             </div>
+            <Link to={`/${this.props.slug}/p`}>
+              <button className="
+                ListProduct__button
+                theme__background-color--secondary
+                theme__background-hover-color--secondary
+                theme__font-family--main">
+                Ver Mais
+              </button>
+            </Link>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12">
+            <hr className="ListProduct__ruler" />
           </div>
         </div>
       </div>

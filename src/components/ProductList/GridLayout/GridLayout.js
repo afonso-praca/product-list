@@ -10,7 +10,7 @@ class GridLayout extends React.Component {
         return (
           <div
             key={product.slug}
-            className="grid-product-wrapper col-xs-6 col-sm-6"
+            className="GridLayout col-xs-6 col-sm-4 col-md-4 col-lg-4"
           >
             <GridProduct {...product} />
           </div>
@@ -19,7 +19,7 @@ class GridLayout extends React.Component {
       ( <div>Carregando</div> );
 
     return (
-      <div className="GridLayout row-fluid clearfix">
+      <div className="GridLayout__wrapper row clearfix">
         { products }
       </div>
     );

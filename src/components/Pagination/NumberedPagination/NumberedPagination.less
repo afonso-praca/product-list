@@ -1,28 +1,23 @@
 @import "~vtex-css-utils/less/_css-utils";
 
 .NumberedPagination {
-  &-inner {
+
+  &__inner {
     width: 100%;
-    padding: 0px 10%;
   }
 
-  &-button {
-    .css-utils-clean-btn;
-    .css-utils-no-outlines;
+  &__button {
+    .css-utils-clean-btn();
+    .css-utils-no-outlines();
     background: @blue-matter-a;
     border-radius: @pad / 2;
     color: @white;
     font-size: 1em;
-    margin-top: @pad * 2;
     padding: 10px 10px;
     min-width: 45%;
 
     &:hover, &:active, &:focus {
       background: darken(@blue-matter-a, 7.5%);
-    }
-
-    & + & {
-      //margin-left: (@pad * 2);
     }
 
     &:first-child::before {
@@ -34,9 +29,10 @@
     }
 
     &[data-is-active="false"] {
-      .css-utils-unselectable;
+      .css-utils-unselectable();
       background: @gray-solid-c;
       color: darken(@gray-solid-c, 15%);
+      cursor: default;
 
       &:hover, &:active, &:focus {
         background: @gray-solid-c;
@@ -44,7 +40,7 @@
     }
   }
 
-  &-dot {
+  &__dot {
     display: inline-block;
     height: 4px;
     width: 4px;

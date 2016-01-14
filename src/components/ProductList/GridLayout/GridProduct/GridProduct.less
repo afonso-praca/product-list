@@ -1,50 +1,93 @@
 @import "~vtex-css-utils/less/_css-utils";
 
 .GridProduct {
-  .product-grid-item {
+  //background: #ccc;
+
+  &__grid-item {
     background: #FFF;
   }
 
-  .product-image {
-    background: red;
-    margin-top: @pad * 2;
+  &__image-wrapper {
+    border-top-left-radius: 2.5px;
+    border-top-right-radius: 2.5px;
+    background: #F6F6F6;
+    position: relative;
+    min-height: 200px;
+    overflow: hidden;
+
+    @media (min-width: @screen-md-min) {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      min-height: 245px;
+    }
   }
 
-  .product-name-wrapper {
-    padding-top: @pad / 2;
-    min-height: 145px;
-  }
+  &__image {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 
-  .product-name {
-    font-family: 'Lato';
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 0px;
-    margin-bottom: @pad;
-  }
-
-  .product-button {
-    border-radius: @pad / 2;
-    color: #FFF;
-    font-size: 14px;
-    font-weight: 500;
-    margin: @pad 0px;
+    margin: auto;
+    position: absolute;
+    height: auto;
     width: 100%;
   }
 
-  .product-price-by {
-    color: #337ab7;
-    font-size: 16px;
-    font-weight: 500;
+  &__content {
+    padding-top: 15px;
+    min-height: 100px;
   }
 
-  .product-price-from {
+  &__name {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 7.5px;
+
+    @media (min-width: @screen-md-min) {
+      font-size: 1.2em;
+    }
+  }
+
+  &__button {
+    .css-utils-clean-btn();
+    .css-utils-no-outlines();
+    border-radius: 2.5px;
+    color: #FFF;
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 7.5px;
+    padding: 10px 15px;
+    width: 100%;
+
+    &:hover {
+      color: darken(#FFF, 5%);
+    }
+  }
+
+  &__price-from {
     color: #666;
-    font-size: 14px;
+    font-size: 1em;
     font-weight: 400;
 
-    .product-price-strike {
+    .GridProduct__price-strike {
       text-decoration: line-through;
     }
   }
+
+  &__price-by {
+    color: #337ab7;
+    font-size: 1.1em;
+    font-weight: 500;
+
+    @media (min-width: @screen-md-min) {
+      font-size: 1.2em;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
 }

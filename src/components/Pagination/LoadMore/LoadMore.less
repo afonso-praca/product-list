@@ -5,14 +5,25 @@
   .css-utils-no-outlines;
 
   background: @blue-matter-a;
-  border-radius: @pad / 2;
+  border-radius: 7.5px / 2;
   color: @white;
-  font-size: 1.2em;
-  margin-top: @pad * 2;
-  padding: 5px 10px;
+  font-size: 1.35em;
+  font-weight: 500;
+  padding: 10px 10px;
   width: 100%;
+
+  @media (min-width: @screen-md-min) {
+    padding: 15px 10px;
+    //margin-left: 25%;
+  }
 
   &:hover, &:active, &:focus {
     background: darken(@blue-matter-a, 7.5%);
+  }
+
+  &__parent {
+    background: darken(#F7F7F7, 5%);
+    border-radius: 2.5px;
+    margin: 30px 0px 15px 0px;
   }
 }
