@@ -3,7 +3,7 @@
   "vendor": "vtex",
   "title": "Product List",
   "description": "Product list component",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "dependencies": {
     "vtex.storefront": "0"
   }
