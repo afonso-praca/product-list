@@ -31,6 +31,10 @@ class ProductList extends React.Component {
   }
 
   render() {
+    if (!this.props.productsIds) {
+      return null;
+    }
+
     let productsIds = this.props.productsIds;
     let products = stores.ProductStore.getProducts(productsIds);
     let layout = this.props.grid ?

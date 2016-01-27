@@ -28,7 +28,9 @@ class Pagination extends React.Component {
   }
 
   render() {
-    let qty = this.getQty(this.props.location, this.props.areaPath, this.props.FacetsStore) || 0;
+    if (!this.props.prodQty) {
+      return null;
+    }
 
     return (
       <div>
