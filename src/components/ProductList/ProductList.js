@@ -15,27 +15,23 @@ class ProductList extends React.Component {
     ];
   }
 
-  static getPropsFromStores = () => {
+  static getPropsFromStores = (props) => {
+    let path = props.location.pathname + props.location.search;
+    let searchStoreKey = [path, `${props.areaPath}/product-list`];
+    let search = stores.SearchStore.getState().getIn(searchStoreKey);
+    let productsIds = search ? search.get('results') : undefined;
+
     return {
-      SearchStore: stores.SearchStore.getState()
+      productsIds
     };
   }
 
-  getProductsIds = (location, areaPath, SearchStore) => {
-    let path = location.pathname + location.search;
-    let searchStoreKey = [path, `${areaPath}/product-list`, 'results'];
-
-    return SearchStore.getIn(searchStoreKey) || undefined;
-  }
-
-  shouldComponentUpdate({ location, areaPath, SearchStore }) {
-    let productsIds = this.getProductsIds(location, areaPath, SearchStore);
-
+  shouldComponentUpdate({ productsIds }) {
     return productsIds !== undefined;
   }
 
   render() {
-    let productsIds = this.getProductsIds(this.props.location, this.props.areaPath, this.props.SearchStore) || [];
+    let productsIds = this.props.productsIds;
     let products = stores.ProductStore.getProducts(productsIds);
     let layout = this.props.grid ?
       ( <GridLayout products={products} /> ) :
@@ -46,10 +42,10 @@ class ProductList extends React.Component {
         <div className="ProductList__inner">
           {
             productsIds.length > 0 ?
-            layout :
-            <h2 className="h2">
-            Não encontramos nenhum produto ):
-            </h2>
+              layout :
+              <h2 className="h2">
+                Não encontramos nenhum produto ):
+              </h2>
           }
         </div>
         <div className="ProductList__pagination">
