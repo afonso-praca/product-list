@@ -15,9 +15,13 @@ class ProductList extends React.Component {
     ];
   }
 
-  static getPropsFromStores = (props) => {
+  static contextTypes = {
+    'parentId': React.PropTypes.string
+  };
+
+  static getPropsFromStores = (props, context) => {
     let path = props.location.pathname + props.location.search;
-    let searchStoreKey = [path, `${props.areaPath}/product-list`];
+    let searchStoreKey = [path, context.parentId];
     let search = stores.SearchStore.getState().getIn(searchStoreKey);
     let productsIds = search ? search.get('results') : undefined;
 
@@ -54,8 +58,7 @@ class ProductList extends React.Component {
         </div>
         <div className="ProductList__pagination">
           <Area
-            id={`${this.props.areaPath}/product-list/pagination`}
-            areaPath={this.props.areaPath}
+            id="pagination"
             location={this.props.location}
             productsLength={productsIds.length}
           />

@@ -1,4 +1,5 @@
 {
+  "placeholders": [ "pagination "],
   "resourceBindings": [
     {
       "locator": "search@vtex.storefront-sdk",
