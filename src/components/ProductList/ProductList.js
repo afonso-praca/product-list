@@ -4,7 +4,7 @@ import GridLayout from './GridLayout/GridLayout';
 import ListLayout from './ListLayout/ListLayout';
 import './ProductList.less';
 
-const Area = stores.ComponentStore.getState().getIn(['Area@vtex.storefront-sdk', 'constructor']);
+const Placeholder = stores.ComponentStore.getState().getIn(['Placeholder@vtex.storefront-sdk', 'constructor']);
 
 @connectToStores()
 class ProductList extends React.Component {
@@ -15,13 +15,9 @@ class ProductList extends React.Component {
     ];
   }
 
-  static contextTypes = {
-    'parentId': React.PropTypes.string
-  };
-
-  static getPropsFromStores = (props, context) => {
+  static getPropsFromStores = (props) => {
     let path = props.location.pathname + props.location.search;
-    let searchStoreKey = [path, context.parentId];
+    let searchStoreKey = [path, props.id];
     let search = stores.SearchStore.getState().getIn(searchStoreKey);
     let productsIds = search ? search.get('results') : undefined;
 
@@ -57,7 +53,7 @@ class ProductList extends React.Component {
           }
         </div>
         <div className="ProductList__pagination">
-          <Area
+          <Placeholder
             id="pagination"
             location={this.props.location}
             productsLength={productsIds.length}
