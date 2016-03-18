@@ -11,13 +11,9 @@ class Pagination extends React.Component {
     ];
   }
 
-  static contextTypes = {
-    'parentId': React.PropTypes.string
-  };
-
-  static getPropsFromStores(props, context) {
+  static getPropsFromStores(props) {
     let path = props.location.pathname + props.location.search;
-    let facetsStoreKey = [path, context.parentId];
+    let facetsStoreKey = [path, props.id];
     let facets = stores.FacetsStore.getState().getIn(facetsStoreKey);
     let category = facets ? facets.getIn(['filters', 'category']).first() : undefined;
     let prodQty = category ? category.get('productQuantity') : undefined;
