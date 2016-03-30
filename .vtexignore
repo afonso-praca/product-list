@@ -10,3 +10,4 @@ npm-debug.log
 package.json
 README.md
 webpack.config.js
+.idea/

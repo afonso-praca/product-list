@@ -1,0 +1,30 @@
+@import "~vtex-css-utils/less/_css-utils";
+@import '../../theme-variables.less';
+
+.ListProduct {
+  &__name {
+    font-family: @sub-title-font;
+    font-size: 18px;
+    letter-spacing: .03em;
+    a {
+      color: @secondary-color;
+    }
+  }
+
+  &__price-from {
+    color: @secondary-color;
+    font-size: .8em;
+  }
+
+  &__price-by {
+    color: @primary-color;
+    font-size: 1em;
+    @media (min-width: @screen-md-min) {
+      font-size: 1em;
+    }
+  }
+
+  &__ruler {
+    margin: 10px 0 15px 0;
+  }
+}

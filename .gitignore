@@ -3,3 +3,4 @@ npm-debug.log
 storefront/assets/**/*
 .DS_Store
 .tern-project
+.ideia/
