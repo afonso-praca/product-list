@@ -1,0 +1,46 @@
+@import "~vtex-css-utils/less/_css-utils";
+
+.GridLayout__clear {
+  .GridLayout {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    border-top: 0px;
+    border-left: 0px;
+  }
+
+  @media (max-width: @screen-xs-max) {
+    &:nth-child(even) {
+      .GridLayout {
+        border-top: 1px solid darken(#F7F7F7, 10%);
+        //border-left: 1px solid darken(#F7F7F7, 10%);
+      }
+    }
+
+    &:nth-child(odd) {
+      .GridLayout {
+        border-top: 1px solid darken(#F7F7F7, 10%);
+        //border-right: 1px solid darken(#F7F7F7, 10%);
+      }
+    }
+
+    &:first-child, &:nth-child(2) {
+      .GridLayout {
+        border-top: none;
+      }
+    }
+  }
+
+}
+
+
+
+@media (max-width: 767px) {
+  .GridLayout__wrapper > .GridLayout__clear:nth-of-type(2n) > .clear::before {
+   content: '';
+   display: table;
+   clear: both;
+ }
+}

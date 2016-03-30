@@ -25,7 +25,7 @@ class ListProduct extends React.Component {
           <div className="ListProduct__content col-xs-6 col-sm-8 col-md-9 col-lg-9">
             <div>
               <h4 className="ListProduct__name">
-                <Link to={`/${this.props.slug}/p`} className="">
+                <Link to={`/${this.props.slug}/p`}>
                   { this.props.name }
                 </Link>
               </h4>
@@ -42,11 +42,6 @@ class ListProduct extends React.Component {
                 </div>
               </Link>
             </div>
-            <Link to={`/${this.props.slug}/p`}>
-              <button className="ListProduct__button">
-                Ver Mais
-              </button>
-            </Link>
           </div>
         </div>
         <div className="row">
