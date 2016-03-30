@@ -1,5 +1,7 @@
 import React from 'react';
+import '../../theme-variables.less';
 import './ListProduct.less';
+import './ListProductCustom.less';
 import { stores } from 'sdk';
 
 const Link = stores.ComponentStore.state.getIn(['Link@vtex.storefront-sdk', 'constructor']);
@@ -69,22 +71,20 @@ class ListProduct extends React.Component {
               }
             </div>
           </Link>
-          <div className="ListProduct__content col-xs-8 col-sm-8 col-md-9 col-lg-9">
+          <div className="ListProduct__content col-xs-6 col-sm-8 col-md-9 col-lg-9">
             <div>
-              <h4 className="ListProduct__name theme__font-family--main">
-                <Link to={`/${this.props.slug}/p`} className="theme__color--dark theme__hover-color--dark">
+              <h4 className="ListProduct__name">
+                <Link to={`/${this.props.slug}/p`} className="">
                   { this.props.name }
                 </Link>
               </h4>
-              <div className="ListProduct__price-from theme__color--dark">
-                <span>de </span>
+              <div className="ListProduct__price-from">
                 <span className="ListProduct__price-strike">
                   <Price value={listPrice} />
                 </span>
               </div>
               <Link className="ListProduct__price-by" to={`/${this.props.slug}/p`}>
-                <div className="theme__color--accent theme__hover-color--accent">
-                  <span>por </span>
+                <div className="">
                   <span className="ListProduct__price">
                     <Price value={price} />
                   </span>
@@ -92,11 +92,7 @@ class ListProduct extends React.Component {
               </Link>
             </div>
             <Link to={`/${this.props.slug}/p`}>
-              <button className="
-                ListProduct__button
-                theme__background-color--secondary
-                theme__background-hover-color--secondary
-                theme__font-family--main">
+              <button className="ListProduct__button">
                 Ver Mais
               </button>
             </Link>
