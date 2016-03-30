@@ -1,5 +1,6 @@
 import React from 'react';
 import './GridProduct.less';
+import './GridProductCustom.less';
 import { stores } from 'sdk';
 
 const Link = stores.ComponentStore.state.getIn(['Link@vtex.storefront-sdk', 'constructor']);
@@ -70,27 +71,20 @@ class GridProduct extends React.Component {
             </Link>
           </div>
           <div className="GridProduct__content">
-            <h4 className="GridProduct__name theme__font-family--main">
-              <Link className="theme__color--dark theme__hover-color--dark" to={`/${this.props.slug}/p`}>
+            <h4 className="GridProduct__name">
+              <Link to={`/${this.props.slug}/p`}>
                 { this.props.name }
               </Link>
             </h4>
-            <div className="GridProduct__price-from theme__color--dark">
-              <span>de </span>
+            <div className="GridProduct__price-from">
               <span className="GridProduct__price-strike"><Price value={listPrice}/></span>
             </div>
             <Link className="GridProduct__price-by" to={`/${this.props.slug}/p`}>
-              <div className="theme__color--accent theme__hover-color--accent">
-                <span>por </span>
+              <div className="">
                 <span className="GridProduct__price"><Price value={price}/></span>
               </div>
             </Link>
           </div>
-            <Link to={`/${this.props.slug}/p`}>
-              <button className="GridProduct__button theme__background-color--secondary theme__font-family--main theme__background-hover-color--secondary">
-                Ver Mais
-              </button>
-            </Link>
         </div>
       </div>
     );
