@@ -13,23 +13,30 @@ class ListProduct extends React.Component {
     let product = this.props;
     let defaultSku = this.props.skus[0];
     let imageUrl = defaultSku.images[0].src.replace(/(#width#|#height#)/g, '320');
-    let listPrice = defaultSku.offers[0].listPrice;
-    let price = defaultSku.offers[0].price;
-    let isAvailable = function(){
-      let hasAvailability = false;
-      _.each(product.skus, function(sku){
-        _.each(sku.offers, function(offer){
-          if (offer.availability > 0 && offer.price > 0){
-            hasAvailability = true;
-          }
-        });
+    let offers = [];
+    let isAvailable = false;
+
+    _.each(product.skus, function(sku){
+      _.each(sku.offers, function(offer){
+        if (offer.availability > 0 && offer.price > 0){
+          isAvailable = true;
+        }
+        offers.push(offer);
       });
-      return hasAvailability;
-    };
+    });
+
+    var currentOffer = _.chain(offers).filter(function(offer){
+      return offer.price > 0;
+    }).min(function(offer){
+      return offer.price;
+    }).value();
+
+    let listPrice = currentOffer.listPrice;
+    let price = currentOffer.price;
 
     return (
       <div className="ListProduct__parent">
-        <div className={"ListProduct" + (isAvailable() ? "" : " unavailable")}>
+        <div className={'ListProduct' + (isAvailable ? '' : ' unavailable')}>
           <Link to={`/${this.props.slug}/p`}>
             <div className="ListProduct__image-wrapper col-xs-6 col-sm-4 col-md-3 col-lg-3">
               <img className="ListProduct__image" src={imageUrl} />
@@ -42,7 +49,7 @@ class ListProduct extends React.Component {
                   { this.props.name }
                 </Link>
               </h4>
-              <div className={"label label-default label-unavailable" + (isAvailable() ? " hide" : "")}>esgotado</div>
+              <div className={'label label-default label-unavailable' + (isAvailable ? ' hide' : '')}>esgotado</div>
               <div className="ListProduct__price-from">
                 <span className="ListProduct__price-strike">
                   <Price value={listPrice} />
