@@ -2,6 +2,20 @@
 @import '../../theme-variables.less';
 
 .ListProduct {
+
+  &.unavailable {
+    .ListProduct__image-wrapper, .ListProduct__name {
+      opacity: .4;
+    }
+    .ListProduct__price, .ListProduct__price-strike {
+      display: none;
+    }
+  }
+
+  .label-unavailable {
+    opacity: .7;
+  }
+
   &__name {
     font-family: @sub-title-font;
     font-size: 18px;

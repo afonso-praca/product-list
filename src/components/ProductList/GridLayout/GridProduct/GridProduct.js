@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'underscore';
 import './GridProduct.less';
 import './GridProductCustom.less';
 import { stores } from 'sdk';
@@ -52,7 +53,6 @@ class GridProduct extends React.Component {
     const price = defaultSku.offers[0].price;
 
     return (
-      <div className="GridProduct">
         <div className="GridProduct__item clearfix">
           <div
             className="GridProduct__image-wrapper"
@@ -76,6 +76,7 @@ class GridProduct extends React.Component {
                 { this.props.name }
               </Link>
             </h4>
+            <div className={"label label-default label-unavailable" + (isAvailable() ? " hide" : "")}>esgotado</div>
             <div className="GridProduct__price-from">
               <span className="GridProduct__price-strike"><Price value={listPrice}/></span>
             </div>

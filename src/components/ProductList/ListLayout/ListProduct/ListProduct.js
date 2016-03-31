@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'underscore';
 import '../../theme-variables.less';
 import './ListProduct.less';
 import './ListProductCustom.less';
@@ -54,7 +55,6 @@ class ListProduct extends React.Component {
 
     return (
       <div className="ListProduct__parent">
-        <div className="ListProduct">
           <Link to={`/${this.props.slug}/p`}>
             <div
               className="ListProduct__image-wrapper col-xs-4 col-sm-4 col-md-3 col-lg-3"
@@ -78,6 +78,7 @@ class ListProduct extends React.Component {
                   { this.props.name }
                 </Link>
               </h4>
+              <div className={"label label-default label-unavailable" + (isAvailable() ? " hide" : "")}>esgotado</div>
               <div className="ListProduct__price-from">
                 <span className="ListProduct__price-strike">
                   <Price value={listPrice} />

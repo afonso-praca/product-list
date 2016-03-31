@@ -3,6 +3,19 @@
 
 .GridProduct {
 
+  &.unavailable {
+    .GridProduct__image-wrapper, .GridProduct__name {
+      opacity: .4;
+    }
+    .GridProduct__price, .GridProduct__price-strike {
+      display: none;
+    }
+  }
+
+  .label-unavailable {
+    opacity: .7;
+  }
+
   &__name {
     font-family: @sub-title-font;
     font-size: 18px;
