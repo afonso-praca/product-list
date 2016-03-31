@@ -36,7 +36,7 @@ class Pagination extends React.Component {
       <div>
         {
           this.props.productsLength < this.props.prodQty ?
-            <LoadMore location={this.props.location} /> : null
+            <LoadMore location={this.props.location} itemsPerPage="12" /> : null
         }
       </div>
     );
