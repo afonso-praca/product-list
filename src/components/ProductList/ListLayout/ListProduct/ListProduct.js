@@ -78,7 +78,7 @@ class ListProduct extends React.Component {
                   { this.props.name }
                 </Link>
               </h4>
-              <div className={"label label-default label-unavailable" + (isAvailable() ? " hide" : "")}>esgotado</div>
+              <div className={'label label-default label-unavailable' + (isAvailable ? ' hide' : '')}>esgotado</div>
               <div className="ListProduct__price-from">
                 <span className="ListProduct__price-strike">
                   <Price value={listPrice} />

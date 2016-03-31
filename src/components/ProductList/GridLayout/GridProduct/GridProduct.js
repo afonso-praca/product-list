@@ -76,7 +76,7 @@ class GridProduct extends React.Component {
                 { this.props.name }
               </Link>
             </h4>
-            <div className={"label label-default label-unavailable" + (isAvailable() ? " hide" : "")}>esgotado</div>
+            <div className={'label label-default label-unavailable' + (isAvailable ? ' hide' : '')}>esgotado</div>
             <div className="GridProduct__price-from">
               <span className="GridProduct__price-strike"><Price value={listPrice}/></span>
             </div>
