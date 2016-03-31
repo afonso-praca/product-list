@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'underscore';
 import '../../theme-variables.less';
 import './ListProduct.less';
 import './ListProductCustom.less';
@@ -9,14 +10,26 @@ const Price = stores.ComponentStore.state.getIn(['Price@vtex.storefront-sdk', 'c
 
 class ListProduct extends React.Component {
   render() {
+    let product = this.props;
     let defaultSku = this.props.skus[0];
     let imageUrl = defaultSku.images[0].src.replace(/(#width#|#height#)/g, '320');
     let listPrice = defaultSku.offers[0].listPrice;
     let price = defaultSku.offers[0].price;
+    let isAvailable = function(){
+      let hasAvailability = false;
+      _.each(product.skus, function(sku){
+        _.each(sku.offers, function(offer){
+          if (offer.availability > 0 && offer.price > 0){
+            hasAvailability = true;
+          }
+        });
+      });
+      return hasAvailability;
+    };
 
     return (
       <div className="ListProduct__parent">
-        <div className="ListProduct">
+        <div className={"ListProduct" + (isAvailable() ? "" : " unavailable")}>
           <Link to={`/${this.props.slug}/p`}>
             <div className="ListProduct__image-wrapper col-xs-6 col-sm-4 col-md-3 col-lg-3">
               <img className="ListProduct__image" src={imageUrl} />
@@ -29,6 +42,7 @@ class ListProduct extends React.Component {
                   { this.props.name }
                 </Link>
               </h4>
+              <div className={"label label-default label-unavailable" + (isAvailable() ? " hide" : "")}>esgotado</div>
               <div className="ListProduct__price-from">
                 <span className="ListProduct__price-strike">
                   <Price value={listPrice} />
