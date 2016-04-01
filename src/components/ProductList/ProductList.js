@@ -3,6 +3,7 @@ import { stores, connectToStores } from 'sdk';
 import GridLayout from './GridLayout/GridLayout';
 import ListLayout from './ListLayout/ListLayout';
 import './ProductList.less';
+import './ProductListCustom.less';
 
 const Placeholder = stores.ComponentStore.getState().getIn(['Placeholder@vtex.storefront-sdk', 'constructor']);
 
