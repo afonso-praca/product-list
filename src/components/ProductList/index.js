@@ -3,7 +3,7 @@ import ProductList from './ProductList';
 
 let components = [
   {
-    name: 'ProductList@vtex.product-list',
+    name: 'ProductList@pilateslovers.product-list',
     constructor: ProductList
   }
 ];

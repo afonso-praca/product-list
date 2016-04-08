@@ -3,7 +3,7 @@ import Pagination from './Pagination';
 
 let components = [
   {
-    name: 'Pagination@vtex.product-list',
+    name: 'Pagination@pilateslovers.product-list',
     constructor: Pagination
   }
 ];
