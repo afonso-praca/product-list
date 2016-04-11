@@ -16,7 +16,7 @@ class LoadMore extends React.Component {
         LoadMore
         theme__background-color--primary
         theme__background-hover-color--primary"
-        onTouchTap={this.handleTouchTap}
+        onClick={this.handleTouchTap}
       >
         <span>Mais Produtos</span>
       </button>

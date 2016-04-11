@@ -9,7 +9,7 @@ class PanelNav extends React.Component {
   render() {
     return (
       <nav className="PanelNav" data-nav-type={this.props.navType}>
-        <button className="header-button" onTouchTap={this.handleTouchTap}/>
+        <button className="header-button" onClick={this.handleTouchTap}/>
       </nav>
     );
   }
