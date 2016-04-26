@@ -33,7 +33,7 @@ class Pagination extends React.Component {
     }
 
     return (
-      <div>
+      <div className="Pagination col-md-4 col-sm-4">
         {
           this.props.productsLength < this.props.prodQty ?
             <LoadMore location={this.props.location} /> : null
