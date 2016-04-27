@@ -4,6 +4,7 @@ import { stores } from 'sdk';
 
 const Link = stores.ComponentStore.state.getIn(['Link@vtex.storefront-sdk', 'constructor']);
 const Price = stores.ComponentStore.state.getIn(['Price@vtex.storefront-sdk', 'constructor']);
+const Img = stores.ComponentStore.state.getIn(['Img@vtex.storefront-sdk', 'constructor']);
 
 class GridProduct extends React.Component {
   render() {
@@ -17,7 +18,7 @@ class GridProduct extends React.Component {
         <div className="GridProduct__item clearfix">
           <div className="GridProduct__image-wrapper">
             <Link className="GridProduct__price-by" to={`/${this.props.slug}/p`}>
-              <img className="GridProduct__image" src={imageUrl} />
+              <Img className="GridProduct__image" src={imageUrl} />
             </Link>
           </div>
           <div className="GridProduct__content">
