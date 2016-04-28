@@ -16,7 +16,8 @@ class ProductList extends React.Component {
   }
 
   static getPropsFromStores = (props) => {
-    let path = props.location.pathname + props.location.search;
+    let location = stores.ContextStore.getState().get('location');
+    let path = location.pathname + location.search;
     let searchStoreKey = [path, props.id];
     let search = stores.SearchStore.getState().getIn(searchStoreKey);
     let productsIds = search ? search.get('results') : undefined;
@@ -55,7 +56,6 @@ class ProductList extends React.Component {
         <div className="ProductList__pagination">
           <Placeholder
             id="pagination"
-            location={this.props.location}
             productsLength={productsIds.length}
           />
         </div>
