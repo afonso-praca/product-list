@@ -20,6 +20,7 @@ class Pagination extends React.Component {
     let prodQty = category ? category.get('productQuantity') : undefined;
 
     return {
+      location,
       prodQty
     };
   }
