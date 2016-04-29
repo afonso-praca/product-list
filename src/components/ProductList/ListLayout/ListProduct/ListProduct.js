@@ -48,10 +48,29 @@ class ListProduct extends React.Component {
 
   render() {
     const { imageSize } = this.state;
+    const product = this.props;
     const defaultSku = this.props.skus[0];
     const imageUrl = defaultSku.images[0].src;
-    const listPrice = defaultSku.offers[0].listPrice;
-    const price = defaultSku.offers[0].price;
+    let offers = [];
+    let isAvailable = false;
+
+    _.each(product.skus, function(sku){
+      _.each(sku.offers, function(offer){
+        if (offer.availability > 0 && offer.price > 0){
+          isAvailable = true;
+        }
+        offers.push(offer);
+      });
+    });
+
+    var currentOffer = _.chain(offers).filter(function(offer){
+      return offer.price > 0;
+    }).min(function(offer){
+      return offer.price;
+    }).value();
+
+    const listPrice = currentOffer.listPrice;
+    const price = currentOffer.price;
 
     return (
       <div className="ListProduct__parent">
@@ -92,7 +111,6 @@ class ListProduct extends React.Component {
                 </div>
               </Link>
             </div>
-          </div>
         </div>
         <div className="row">
           <div className="col-xs-12">

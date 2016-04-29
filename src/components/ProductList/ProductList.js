@@ -23,7 +23,8 @@ class ProductList extends React.Component {
     let productsIds = search ? search.get('results') : undefined;
 
     return {
-      productsIds
+      productsIds,
+      location
     };
   }
 
@@ -56,6 +57,7 @@ class ProductList extends React.Component {
         <div className="ProductList__pagination">
           <Placeholder
             id="pagination"
+            location={this.props.location}
             productsLength={productsIds.length}
           />
         </div>
