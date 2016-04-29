@@ -3,7 +3,7 @@
   "vendor": "pilateslovers",
   "title": "Product List",
   "description": "Product list component",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "dependencies": {
     "vtex.storefront": "0"
   }
