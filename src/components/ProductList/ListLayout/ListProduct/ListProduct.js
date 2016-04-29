@@ -7,18 +7,66 @@ const Price = stores.ComponentStore.state.getIn(['Price@vtex.storefront-sdk', 'c
 const Img = stores.ComponentStore.state.getIn(['Img@vtex.storefront-sdk', 'constructor']);
 
 class ListProduct extends React.Component {
+  componentWillMount() {
+    this.setState({ imageSize: null });
+  }
+
+  componentDidMount() {
+    this.setState({ imageSize: this.imageWrapper.clientHeight });
+
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentDidUpdate() {
+    if (this.imageWrapper.clientWidth < this.imageWrapper.scrollWidth) {
+      this.setState({ imageSize: this.imageWrapper.clientWidth });
+    }
+  }
+
+  componentWillUnmount() {
+    this.clearResizeTimeout();
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  onResize = () => {
+    this.clearResizeTimeout();
+
+    this.resizeTimeout = setTimeout(() => {
+      this.setState({ imageSize: this.imageWrapper.clientHeight });
+    }, 200);
+  }
+
+  clearResizeTimeout = () => {
+    if (this.resizeTimeout) {
+      clearTimeout(this.resizeTimeout);
+      this.resizeTimeout = null;
+    }
+  }
+
   render() {
-    let defaultSku = this.props.skus[0];
-    let imageUrl = defaultSku.images[0].src.replace(/(#width#|#height#)/g, '320');
-    let listPrice = defaultSku.offers[0].listPrice;
-    let price = defaultSku.offers[0].price;
+    const { imageSize } = this.state;
+    const defaultSku = this.props.skus[0];
+    const imageUrl = defaultSku.images[0].src;
+    const listPrice = defaultSku.offers[0].listPrice;
+    const price = defaultSku.offers[0].price;
 
     return (
       <div className="ListProduct__parent">
         <div className="ListProduct">
           <Link to={`/${this.props.slug}/p`}>
-            <div className="ListProduct__image-wrapper col-xs-4 col-sm-4 col-md-3 col-lg-3">
-              <Img className="ListProduct__image" src={imageUrl} />
+            <div
+              className="ListProduct__image-wrapper col-xs-4 col-sm-4 col-md-3 col-lg-3"
+              ref={(imageWrapper) => this.imageWrapper = imageWrapper}
+            >
+              {
+                imageSize ?
+                  <Img
+                    className="ListProduct__image"
+                    src={imageUrl}
+                    width={imageSize}
+                    height={imageSize}
+                  /> : null
+              }
             </div>
           </Link>
           <div className="ListProduct__content col-xs-8 col-sm-8 col-md-9 col-lg-9">

@@ -7,18 +7,66 @@ const Price = stores.ComponentStore.state.getIn(['Price@vtex.storefront-sdk', 'c
 const Img = stores.ComponentStore.state.getIn(['Img@vtex.storefront-sdk', 'constructor']);
 
 class GridProduct extends React.Component {
+  componentWillMount() {
+    this.setState({ imageSize: null });
+  }
+
+  componentDidMount() {
+    this.setState({ imageSize: this.imageWrapper.clientHeight });
+
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentDidUpdate() {
+    if (this.imageWrapper.clientWidth < this.imageWrapper.scrollWidth) {
+      this.setState({ imageSize: this.imageWrapper.clientWidth });
+    }
+  }
+
+  componentWillUnmount() {
+    this.clearResizeTimeout();
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  onResize = () => {
+    this.clearResizeTimeout();
+
+    this.resizeTimeout = setTimeout(() => {
+      this.setState({ imageSize: this.imageWrapper.clientHeight });
+    }, 200);
+  }
+
+  clearResizeTimeout = () => {
+    if (this.resizeTimeout) {
+      clearTimeout(this.resizeTimeout);
+      this.resizeTimeout = null;
+    }
+  }
+
   render() {
-    let defaultSku = this.props.skus[0];
-    let imageUrl = defaultSku.images[0].src.replace(/(#width#|#height#)/g, '320');
-    let listPrice = defaultSku.offers[0].listPrice;
-    let price = defaultSku.offers[0].price;
+    const { imageSize } = this.state;
+    const defaultSku = this.props.skus[0];
+    const imageUrl = defaultSku.images[0].src;
+    const listPrice = defaultSku.offers[0].listPrice;
+    const price = defaultSku.offers[0].price;
 
     return (
       <div className="GridProduct">
         <div className="GridProduct__item clearfix">
-          <div className="GridProduct__image-wrapper">
+          <div
+            className="GridProduct__image-wrapper"
+            ref={(imageWrapper) => this.imageWrapper = imageWrapper}
+          >
             <Link className="GridProduct__price-by" to={`/${this.props.slug}/p`}>
-              <Img className="GridProduct__image" src={imageUrl} />
+              {
+                imageSize ?
+                  <Img
+                    className="GridProduct__image"
+                    src={imageUrl}
+                    width={imageSize}
+                    height={imageSize}
+                  /> : null
+              }
             </Link>
           </div>
           <div className="GridProduct__content">
