@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'underscore';
 import '../../theme-variables.less';
 import './ListProduct.less';
 import './ListProductCustom.less';
@@ -8,6 +7,19 @@ import { stores } from 'sdk';
 const Link = stores.ComponentStore.state.getIn(['Link@vtex.storefront-sdk', 'constructor']);
 const Price = stores.ComponentStore.state.getIn(['Price@vtex.storefront-sdk', 'constructor']);
 const Img = stores.ComponentStore.state.getIn(['Img@vtex.storefront-sdk', 'constructor']);
+
+const getOfferPrice = (offers) => {
+  var currentOffer = offers.map((offer) => {
+    if (offer.price > 0) {
+      return offer;
+    }
+  });
+
+  return currentOffer[0] ? {
+    listPrice: currentOffer[0].listPrice,
+    price: currentOffer[0].price
+  } : {};
+}
 
 class ListProduct extends React.Component {
   componentWillMount() {
@@ -51,26 +63,19 @@ class ListProduct extends React.Component {
     const product = this.props;
     const defaultSku = this.props.skus[0];
     const imageUrl = defaultSku.images[0].src;
-    let offers = [];
     let isAvailable = false;
 
-    _.each(product.skus, function(sku){
-      _.each(sku.offers, function(offer){
-        if (offer.availability > 0 && offer.price > 0){
+    let offers = [];
+    for (var sku of product.skus) {
+      for (var offer of sku.offers) {
+        if (offer.availability > 0 && offer.price > 0) {
           isAvailable = true;
         }
         offers.push(offer);
-      });
-    });
+      }
+    }
 
-    var currentOffer = _.chain(offers).filter(function(offer){
-      return offer.price > 0;
-    }).min(function(offer){
-      return offer.price;
-    }).value();
-
-    const listPrice = currentOffer.listPrice;
-    const price = currentOffer.price;
+    const offerPrice = getOfferPrice(offers);
 
     return (
       <div className="ListProduct__parent">
@@ -100,13 +105,13 @@ class ListProduct extends React.Component {
               <div className={'label label-default label-unavailable' + (isAvailable ? ' hide' : '')}>esgotado</div>
               <div className="ListProduct__price-from">
                 <span className="ListProduct__price-strike">
-                  <Price value={listPrice} />
+                  <Price value={offerPrice.listPrice} />
                 </span>
               </div>
               <Link className="ListProduct__price-by" to={`/${this.props.slug}/p`}>
                 <div className="">
                   <span className="ListProduct__price">
-                    <Price value={price} />
+                    <Price value={offerPrice.price} />
                   </span>
                 </div>
               </Link>
