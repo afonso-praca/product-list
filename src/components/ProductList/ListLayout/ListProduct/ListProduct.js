@@ -15,10 +15,14 @@ const getOfferPrice = (offers) => {
     }
   });
 
-  return currentOffer[0] ? {
-    listPrice: currentOffer[0].listPrice,
-    price: currentOffer[0].price
-  } : {};
+  for (let i = 0; i < currentOffer.length; i++) {
+    if (currentOffer[i]) {
+      return {
+        listPrice: currentOffer[i].listPrice,
+        price: currentOffer[i].price
+      }
+    }
+  }
 }
 
 class ListProduct extends React.Component {
@@ -102,19 +106,24 @@ class ListProduct extends React.Component {
                   { this.props.name }
                 </Link>
               </h4>
-              <div className={'label label-default label-unavailable' + (isAvailable ? ' hide' : '')}>esgotado</div>
-              <div className="ListProduct__price-from">
-                <span className="ListProduct__price-strike">
-                  <Price value={offerPrice.listPrice} />
-                </span>
-              </div>
-              <Link className="ListProduct__price-by" to={`/${this.props.slug}/p`}>
-                <div className="">
-                  <span className="ListProduct__price">
-                    <Price value={offerPrice.price} />
-                  </span>
-                </div>
-              </Link>
+              {
+                isAvailable ?
+                  <div>
+                    <div className="ListProduct__price-from">
+                      <span className="ListProduct__price-strike">
+                        <Price value={offerPrice.listPrice} />
+                      </span>
+                    </div>
+                    <Link className="ListProduct__price-by" to={`/${this.props.slug}/p`}>
+                      <div className="">
+                        <span className="ListProduct__price">
+                          <Price value={offerPrice.price} />
+                        </span>
+                      </div>
+                    </Link>
+                  </div> :
+                  <div className="label label-default label-unavailable">esgotado</div>
+              }
             </div>
         </div>
         <div className="row">

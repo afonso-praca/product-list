@@ -14,10 +14,14 @@ const getOfferPrice = (offers) => {
     }
   });
 
-  return currentOffer[0] ? {
-    listPrice: currentOffer[0].listPrice,
-    price: currentOffer[0].price
-  } : {};
+  for (let i = 0; i < currentOffer.length; i++) {
+    if (currentOffer[i]) {
+      return {
+        listPrice: currentOffer[i].listPrice,
+        price: currentOffer[i].price
+      }
+    }
+  }
 }
 
 class GridProduct extends React.Component {
@@ -73,7 +77,6 @@ class GridProduct extends React.Component {
         offers.push(offer);
       }
     }
-
     const offerPrice = getOfferPrice(offers);
 
     return (
@@ -100,15 +103,20 @@ class GridProduct extends React.Component {
                 { this.props.name }
               </Link>
             </h4>
-            <div className={'label label-default label-unavailable' + (isAvailable ? ' hide' : '')}>esgotado</div>
-            <div className="GridProduct__price-from">
-              <span className="GridProduct__price-strike"><Price value={offerPrice.listPrice}/></span>
-            </div>
-            <Link className="GridProduct__price-by" to={`/${this.props.slug}/p`}>
-              <div className="">
-                <span className="GridProduct__price"><Price value={offerPrice.price}/></span>
-              </div>
-            </Link>
+            {
+              isAvailable ?
+                <div>
+                  <div className="GridProduct__price-from">
+                    <span className="GridProduct__price-strike"><Price value={offerPrice.listPrice}/></span>
+                  </div>
+                  <Link className="GridProduct__price-by" to={`/${this.props.slug}/p`}>
+                    <div className="">
+                      <span className="GridProduct__price"><Price value={offerPrice.price}/></span>
+                    </div>
+                  </Link>
+                </div> :
+                <span className="label label-default label-unavailable">esgotado</span>
+            }
           </div>
         </div>
     );
