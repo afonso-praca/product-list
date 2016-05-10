@@ -3,6 +3,9 @@
   "vendor": "pilateslovers",
   "title": "Product List",
   "description": "Product list component",
+  "categories": [
+    "appearance"
+  ],
   "version": "0.1.6",
   "dependencies": {
     "vtex.storefront": "0"
