@@ -9,6 +9,12 @@
   @media (min-width: @screen-sm-min) {
     border-top: 0px;
     border-left: 0px;
+
+    &:nth-child(3n+1) {
+      .GridLayout__clear-left {
+        clear: left;
+      }
+    }
   }
 
   @media (max-width: @screen-xs-max) {

@@ -9,7 +9,7 @@ class GridLayout extends React.Component {
       this.props.products.map((product) => {
         return (
           <div className="GridLayout__clear" key={product.slug}>
-            <div className="GridLayout col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <div className="GridLayout__clear-left col-xs-6 col-sm-4 col-md-4 col-lg-4">
               <GridProduct {...product} />
             </div>
             <div className="clear"></div>
