@@ -23,7 +23,11 @@ const getOfferPrice = (offers) => {
       }
     }
   }
-}
+};
+
+const shouldShowListPrice = function(offerPrice){
+  return offerPrice.listPrice && (offerPrice.listPrice > offerPrice.price);
+};
 
 class ListProduct extends React.Component {
   componentWillMount() {
@@ -82,7 +86,7 @@ class ListProduct extends React.Component {
     const offerPrice = getOfferPrice(offers);
 
     return (
-      <div className="ListProduct__parent">
+      <div className={"ListProduct__parent"  + (!isAvailable ? " unavailable" : "")}>
           <Link to={`/${this.props.slug}/p`}>
             <div
               className="ListProduct__image-wrapper col-xs-4 col-sm-4 col-md-3 col-lg-3"
@@ -109,11 +113,14 @@ class ListProduct extends React.Component {
               {
                 isAvailable ?
                   <div>
-                    <div className="ListProduct__price-from">
-                      <span className="ListProduct__price-strike">
-                        <Price value={offerPrice.listPrice} />
-                      </span>
-                    </div>
+                    {
+                      shouldShowListPrice(offerPrice) ?
+                        <div className="ListProduct__price-from">
+                          <span className="ListProduct__price-strike">
+                            <Price value={offerPrice.listPrice} />
+                          </span>
+                        </div> : null
+                    }
                     <Link className="ListProduct__price-by" to={`/${this.props.slug}/p`}>
                       <div className="">
                         <span className="ListProduct__price">

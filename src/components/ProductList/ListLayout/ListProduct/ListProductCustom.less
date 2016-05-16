@@ -1,41 +1,44 @@
 @import "~vtex-css-utils/less/_css-utils";
 @import '../../theme-variables.less';
 
-.ListProduct {
-
-  &.unavailable {
-    .ListProduct__image-wrapper, .ListProduct__name {
-      opacity: .4;
+.ListLayout {
+  &__product {
+    .ListProduct__name {
+      font-family: @text-font;
+      font-size: 14px;
+      letter-spacing: .03em;
+      font-weight: 500;
+      a {
+        color: @secondary-color;
+      }
     }
-    .ListProduct__price, .ListProduct__price-strike {
-      display: none;
+    .ListProduct__price-from {
+      color: @secondary-color;
+      font-size: .8em;
+    }
+
+    .ListProduct__price-by {
+      color: @primary-color;
+      font-size: 1em;
+      @media (min-width: @screen-md-min) {
+        font-size: 1em;
+      }
+    }
+    .ListProduct__image-wrapper {
+      background: #FFFFFF;
+    }
+    .ListProduct__parent.unavailable {
+      .ListProduct__image-wrapper, .ListProduct__name {
+        opacity: .4;
+      }
+      .ListProduct__price, .ListProduct__price-strike {
+        display: none;
+      }
     }
   }
 
   .label-unavailable {
     opacity: .7;
-  }
-
-  &__name {
-    font-family: @sub-title-font;
-    font-size: 18px;
-    letter-spacing: .03em;
-    a {
-      color: @secondary-color;
-    }
-  }
-
-  &__price-from {
-    color: @secondary-color;
-    font-size: .8em;
-  }
-
-  &__price-by {
-    color: @primary-color;
-    font-size: 1em;
-    @media (min-width: @screen-md-min) {
-      font-size: 1em;
-    }
   }
 
   &__ruler {
