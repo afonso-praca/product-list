@@ -84,7 +84,7 @@ class GridProduct extends React.Component {
     const offerPrice = getOfferPrice(offers);
 
     return (
-        <div className="GridProduct__item clearfix">
+        <div className={"GridProduct__item clearfix" + (!isAvailable ? " unavailable" : "")}>
           <div
             className="GridProduct__image-wrapper"
             ref={(imageWrapper) => this.imageWrapper = imageWrapper}
