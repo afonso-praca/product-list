@@ -84,7 +84,7 @@ class GridProduct extends React.Component {
     const offerPrice = getOfferPrice(offers);
 
     return (
-        <div className={"GridProduct__item clearfix" + (!isAvailable ? " unavailable" : "")}>
+        <div className={'GridProduct__item clearfix' + (!isAvailable ? ' unavailable' : '')}>
           <div
             className="GridProduct__image-wrapper"
             ref={(imageWrapper) => this.imageWrapper = imageWrapper}
@@ -109,7 +109,7 @@ class GridProduct extends React.Component {
             </h4>
             {
               isAvailable ?
-                <div>
+                <Link to={`/${this.props.slug}/p`}>
                   {
                     shouldShowListPrice(offerPrice) ?
                       <div className="GridProduct__price-from">
@@ -117,13 +117,12 @@ class GridProduct extends React.Component {
                       </div>
                       : null
                   }
-
-                  <Link className="GridProduct__price-by" to={`/${this.props.slug}/p`}>
+                  <div className="GridProduct__price-by">
                     <div className="">
                       <span className="GridProduct__price"><Price value={offerPrice.price}/></span>
                     </div>
-                  </Link>
-                </div> :
+                  </div>
+                </Link> :
                 <span className="label label-default label-unavailable">esgotado</span>
             }
           </div>

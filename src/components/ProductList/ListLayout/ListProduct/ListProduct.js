@@ -57,14 +57,14 @@ class ListProduct extends React.Component {
     this.resizeTimeout = setTimeout(() => {
       this.setState({ imageSize: this.imageWrapper.clientHeight });
     }, 200);
-  }
+  };
 
   clearResizeTimeout = () => {
     if (this.resizeTimeout) {
       clearTimeout(this.resizeTimeout);
       this.resizeTimeout = null;
     }
-  }
+  };
 
   render() {
     const { imageSize } = this.state;
@@ -72,6 +72,8 @@ class ListProduct extends React.Component {
     const defaultSku = this.props.skus[0];
     const imageUrl = defaultSku.images[0].src;
     let isAvailable = false;
+
+    console.log(product);
 
     let offers = [];
     for (var sku of product.skus) {
@@ -86,7 +88,7 @@ class ListProduct extends React.Component {
     const offerPrice = getOfferPrice(offers);
 
     return (
-      <div className={"ListProduct__parent"  + (!isAvailable ? " unavailable" : "")}>
+      <div className={'ListProduct__parent'  + (!isAvailable ? ' unavailable' : '')}>
           <Link to={`/${this.props.slug}/p`}>
             <div
               className="ListProduct__image-wrapper col-xs-4 col-sm-4 col-md-3 col-lg-3"
@@ -112,7 +114,7 @@ class ListProduct extends React.Component {
               </h4>
               {
                 isAvailable ?
-                  <div>
+                  <Link className="ListProduct__price-by" to={`/${this.props.slug}/p`}>
                     {
                       shouldShowListPrice(offerPrice) ?
                         <div className="ListProduct__price-from">
@@ -121,14 +123,17 @@ class ListProduct extends React.Component {
                           </span>
                         </div> : null
                     }
-                    <Link className="ListProduct__price-by" to={`/${this.props.slug}/p`}>
+                    <div className="ListProduct__price-by">
                       <div className="">
                         <span className="ListProduct__price">
                           <Price value={offerPrice.price} />
                         </span>
                       </div>
-                    </Link>
-                  </div> :
+                    </div>
+                    <div className="badge">
+                      { this.props.brand.name }
+                    </div>
+                  </Link> :
                   <div className="label label-default label-unavailable">esgotado</div>
               }
             </div>
