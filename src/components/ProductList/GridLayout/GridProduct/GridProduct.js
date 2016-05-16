@@ -22,7 +22,11 @@ const getOfferPrice = (offers) => {
       }
     }
   }
-}
+};
+
+const shouldShowListPrice = function(offerPrice){
+  return offerPrice.listPrice && (offerPrice.listPrice > offerPrice.price);
+};
 
 class GridProduct extends React.Component {
   componentWillMount() {
@@ -52,14 +56,14 @@ class GridProduct extends React.Component {
     this.resizeTimeout = setTimeout(() => {
       this.setState({ imageSize: this.imageWrapper.clientHeight });
     }, 200);
-  }
+  };
 
   clearResizeTimeout = () => {
     if (this.resizeTimeout) {
       clearTimeout(this.resizeTimeout);
       this.resizeTimeout = null;
     }
-  }
+  };
 
   render() {
     const { imageSize } = this.state;
@@ -106,9 +110,14 @@ class GridProduct extends React.Component {
             {
               isAvailable ?
                 <div>
-                  <div className="GridProduct__price-from">
-                    <span className="GridProduct__price-strike"><Price value={offerPrice.listPrice}/></span>
-                  </div>
+                  {
+                    shouldShowListPrice(offerPrice) ?
+                      <div className="GridProduct__price-from">
+                        <span className="GridProduct__price-strike"><Price value={offerPrice.listPrice}/></span>
+                      </div>
+                      : null
+                  }
+
                   <Link className="GridProduct__price-by" to={`/${this.props.slug}/p`}>
                     <div className="">
                       <span className="GridProduct__price"><Price value={offerPrice.price}/></span>
