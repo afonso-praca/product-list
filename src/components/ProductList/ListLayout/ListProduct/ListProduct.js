@@ -73,8 +73,6 @@ class ListProduct extends React.Component {
     const imageUrl = defaultSku.images[0].src;
     let isAvailable = false;
 
-    console.log(product);
-
     let offers = [];
     for (var sku of product.skus) {
       for (var offer of sku.offers) {
